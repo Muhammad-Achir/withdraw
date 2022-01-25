@@ -1,0 +1,26 @@
+.parent{
+    margin: 2px;
+  }
+   
+  .sidebar{
+    width: 20%;
+    margin-right: 2px;
+    float: left;
+  }
+  
+  .container{
+    margin-right: 0px;
+  }
+
+  .list-group-item {
+    background-color: #282c34;
+    border-top: 1px solid #0091b5;
+    border-left-color: rgb(133, 13, 13);
+    border-right-color: rgb(155, 177, 11);
+    color: honeydew;
+  }
+  
+  .list-group-item:hover {
+    background-color: #0d6efd;
+    color: honeydew;
+  }
