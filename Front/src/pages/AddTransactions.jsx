@@ -2,9 +2,12 @@ import './AddTransactions.css'
 
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { setDeposit, setWithdraw } from '../store/action'
 
 function AddTransactions() {
     const history = useHistory()
+    const dispatch = useDispatch ()
 
     const [transactions, setTransactions] = useState({
         "id_user_detail": 0,
@@ -36,6 +39,11 @@ function AddTransactions() {
             })
             .then(data => {
                 console.log(data)
+                if (transactions.transaction_date == "deposit") {
+                    dispatch(setDeposit(data.balance))
+                } else {
+                    dispatch(setWithdraw(data.balance))
+                }
                 history.push("/history-transactions")
             })
             .catch(err => {

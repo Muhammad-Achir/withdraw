@@ -9,10 +9,6 @@ import './Login.css'
 function Login (props) {
     const history = useHistory()
     const dispatch = useDispatch ()
-    const [ user, seterUser ] = useState ({
-        name: "",
-        balance: 0
-    })
 
     const [ credentials, setCredentials ] = useState ({
         name: '',
@@ -39,17 +35,10 @@ function Login (props) {
             return response.json()
         })
         .then (data => {
-            console.log(data)
+            // console.log(data)
+            dispatch(setUser(data))
             localStorage.setItem ('token', data.token)
-            
-            seterUser(() => {
-                return { name: data.name, balance: data.balance}
-            })
-
-            console.log(user)
-            props.setLogin ()
-
-            dispatch(setUser({name: user.name, balance: user.balance}))
+            props.setLogin ()           
 
             history.push ('/')
         })

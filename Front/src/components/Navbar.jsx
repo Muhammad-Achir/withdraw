@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux"
 
+import "./Navbar.css"
+
 function Navbar(props) {
 
     const user = useSelector(state => state.user)
@@ -13,13 +15,13 @@ function Navbar(props) {
             {
                 isLoggedIn ?
                     <div>
-                        <span className=''>
-                            Wellcome {user.name} your balance:
-                            {user.balance}
-                        </span>
+                        <p className='currenc'>
+                            Wellcome {user.name} your balance: 
+                            {user.balance.toLocaleString("id-ID", {style:"currency", currency:"IDR"})}
+                        </p>
 
-                        <span onClick={props.logout} className="nav-link">Logout
-                        </span>
+                        <p onClick={props.logout} className="nav-link currenc">Logout
+                        </p>
                     </div> :
                     <Link to="/login" className="nav-link">Login</Link>
             }
